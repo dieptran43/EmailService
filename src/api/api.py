@@ -6,6 +6,7 @@ import json
 @require_POST
 def send_email(request):
     print('send email')
+
     request_content = request.body
 
     request_body = json.loads(request_content)
