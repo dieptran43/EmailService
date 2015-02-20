@@ -2,7 +2,17 @@ from django.utils import unittest
 from django.test.client import RequestFactory, Client
 import json
 
-class SendEmailTests(unittest.TestCase):
+class ApiTestCase(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_one_plus_one(self):
+
+        one = 1
+
+        assert one == 1
+
+class SendEmailIntegrationTests(unittest.TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.client = Client()
@@ -45,5 +55,8 @@ class SendEmailTests(unittest.TestCase):
         response = self.client.post(url, data=request_data_json, content_type='application/json')
 
         self.assertEqual(response.status_code, 200)
+
+
+
 
 
