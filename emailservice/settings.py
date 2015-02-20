@@ -25,21 +25,20 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
-MANDRILL_API_KEY="XXX"
+MANDRILL_API_KEY="BU5ZPG4iBCdIaa33A4OAjw"
 
 EMAIL_BACKEND="djrill.mail.backends.djrill.DjrillBackend"
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.admin.apps.SimpleAdminConfig',
+    'django.contrib.admin.apps.SimpleAdminConfig',
     ## 3rd party
     'rest_framework',
     'djrill',
@@ -61,12 +60,12 @@ AUTHENTICATION_BACKENDS = (
 
 ## REST
 REST_FRAMEWORK = {
-    #'DEFAULT_PERMISSION_CLASSES': (
-    #    'rest_framework.permissions.IsAuthenticated',
-    #),
-    #'DEFAULT_AUTHENTICATION_CLASSES': (
-    #    'tokenauth.authbackends.RESTTokenAuthBackend',
-    #)
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'tokenauth.authbackends.RESTTokenAuthBackend',
+    ),
     'DEAFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]

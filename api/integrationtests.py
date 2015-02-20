@@ -2,8 +2,7 @@ from django.utils import unittest
 from django.test.client import RequestFactory, Client
 import json
 
-
-class ApiTestCase(unittest.TestCase):
+class SendEmailTests(unittest.TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.client = Client()
@@ -32,7 +31,7 @@ class ApiTestCase(unittest.TestCase):
             "FromEmail": "konrad@tagentsolutions.co.za",
             "ToRecipients": ["kehinze@gmail.com"],
             "Subject" : "This is test email tempalte subject",
-            "TemplateName": "This is test email template name",
+            "TemplateName": "tangent-test",
             "TemplateContent": {
                 "Name": "TestName",
                 "Surname": "Testsurname"
