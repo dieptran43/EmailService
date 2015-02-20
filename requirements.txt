@@ -6,7 +6,6 @@ django-rest-swagger
 django-filter
 mandrill
 djrill
-mock
 
 ## dev requirements
 sphinx
