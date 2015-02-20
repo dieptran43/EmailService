@@ -9,16 +9,16 @@
 
     vars:
         postgresql_databases:
-            - name: hoursservice
+            - name: emailservice
 
         postgresql_users:
-            - name: hoursservice
-            pass: hoursservice
+            - name: emailservice
+            pass: emailservice
 
         encrypted: no # denotes if the password is already encrypted.
         postgresql_user_privileges:
-            - name: hoursservice # user name
-            db: hoursservice # database
+            - name: emailservice # user name
+            db: emailservice # database
             priv: "ALL"
 
         django_apps:
@@ -30,7 +30,7 @@
             "path_to_managepy" : "",
             "djangoapp_httpport": 8004,
             "djangoapp_static" : true,
-            "djangoapp_domains" : "staging.hoursservice.tangentme.com",
+            "djangoapp_domains" : "staging.emailservice.tangentme.com",
             "djangoapp_pythonversion" : "2.7",
             "djangoapp_db_engine" : "postgresql_psycopg2",
             "djangoapp_db_host" : "127.0.0.1"
