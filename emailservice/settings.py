@@ -25,7 +25,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-MANDRILL_API_KEY="BU5ZPG4iBCdIaa33A4OAjw"
+MANDRILL_API_KEY="XXX"
 
 EMAIL_BACKEND="djrill.mail.backends.djrill.DjrillBackend"
 
