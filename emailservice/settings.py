@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.admin.apps.SimpleAdminConfig',
     ## 3rd party
     'rest_framework',
@@ -128,3 +127,4 @@ JENKINS_TASKS = (
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
