@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.admin.apps.SimpleAdminConfig',
     ## 3rd party
     'rest_framework',
+    'rest_framework_swagger',
     'djrill',
     ## custom
     'tokenauth',
@@ -75,10 +76,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    ## add this:
+    'tokenauth.middleware.TokenAuthMiddleware',
 )
 
 ROOT_URLCONF = 'emailservice.urls'
@@ -123,6 +128,16 @@ JENKINS_TASKS = (
     # 'django_jenkins.tasks.run_sloccount',
     # 'django_jenkins.tasks.run_graphmodels'
 )
+
+SWAGGER_SETTINGS = {
+    'api_key': '8600754f305f0c00ce42e9a53cc42dbe0b89650f',
+    'info': {
+    'contact': 'admin@tangentsolutions.co.za',
+    'description': 'A microservice for handling project status and information. From scaffolding 3rd party tools etc to managing resourcing and project tracking',
+    'license': 'MIT',
+    'title': 'EmailService',
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

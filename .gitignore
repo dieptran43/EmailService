@@ -5,6 +5,7 @@ __pycache__/
 # C extensions
 *.so
 
+
 # Distribution / packaging
 .Python
 env/
@@ -20,6 +21,7 @@ sdist/
 var/
 *.egg-info/
 .installed.cfg
+db.sqlite3
 *.egg
 
 # PyInstaller

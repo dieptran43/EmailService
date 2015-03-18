@@ -1,11 +1,29 @@
 from django.http import HttpResponse, HttpResponseServerError
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives, EmailMessage
-
+from rest_framework import viewsets, serializers, routers
+from rest_framework.views import APIView
+from rest_framework.decorators import detail_route, list_route, api_view
+from rest_framework.response import Response
 import json
 
-@require_POST
+
+@api_view(["POST"])
 def send_email(request):
+    """
+    Send an email with mandrill template
+    ---
+    parameters:
+        - name: FromEmail
+          description: This is from email address field
+        - name: ToRecipients
+          description: This is from email address field
+        - name: Body
+          description: This is from email address field
+        - name: Subject
+          description: This is from email address field
+
+    """
 
     request_content = request.body
 
@@ -29,8 +47,28 @@ def send_email(request):
         return server_error(ex)
 
 
-@require_POST
+@api_view(["POST"])
 def send_email_template(request):
+    """
+    Send an email with mandrill template
+    ---
+    parameters:
+        - name: FromEmail
+          description: This is from email address field
+        - name: ToRecipients
+          description: This is from email address field
+        - name: Subject
+          description: This is from email address field
+        - name: TemplateName
+          description: This is from email address field
+        - name: TemplateContent
+          description: This is from email address field
+        - name: UseTemplateSubject
+          description: This is from email address field
+        - name: UseTemplateFrom
+          description: This is from email address field
+
+    """
 
     request_content = request.body
 
@@ -68,6 +106,10 @@ def server_error(exception):
     error_response_json = json.dumps(error_response)
 
     return HttpResponseServerError(error_response_json)
+
+
+email_message_router = routers.DefaultRouter()
+#email_message_router.register('sendemailw', SendEmailViewSet)
 
 
 
