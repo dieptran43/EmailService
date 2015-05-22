@@ -28,7 +28,8 @@ ALLOWED_HOSTS = []
 MANDRILL_API_KEY="XXX"
 
 EMAIL_BACKEND="djrill.mail.backends.djrill.DjrillBackend"
-
+UPLOAD_ATTACHMENT_PATH ="/tmp/storage/attachments"
+UPLOAD_IMAGE_PATH ="/tmp/storage/imagepath"
 # Application definition
 
 INSTALLED_APPS = (
@@ -56,17 +57,17 @@ INSTALLED_APPS = (
 # CUSTOM AUTH
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'tokenauth.authbackends.TokenAuthBackend'
+   # 'tokenauth.authbackends.TokenAuthBackend'
 )
 
 ## REST
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'tokenauth.authbackends.RESTTokenAuthBackend',
-    ),
+   # 'DEFAULT_PERMISSION_CLASSES': (
+   #     'rest_framework.permissions.IsAuthenticated',
+   # ),
+   # 'DEFAULT_AUTHENTICATION_CLASSES': (
+   #     'tokenauth.authbackends.RESTTokenAuthBackend',
+   # ),
     'DEAFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]

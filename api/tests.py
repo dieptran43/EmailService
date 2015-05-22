@@ -1,16 +1,27 @@
 from django.utils import unittest
 from django.test.client import RequestFactory, Client
 import json
+from models import Email
 
-class ApiTestCase(unittest.TestCase):
+class StoreEmailTestCase(unittest.TestCase):
+
     def setUp(self):
         pass
 
-    def test_one_plus_one(self):
+    def test_store_email(self):
+        import pdb;pdb.set_trace()
+        email = Email()
+        email.html = 'This is test html'
+        email.from_email = "kehinze@gmail.com"
+        email.from_name = "Konrad"
+        email.important = False
+        email.email_status = email.Sent
+        email.subject = 'This is a test subject'
+        email.reply_to = 'kehie@gmail.com'
 
-        one = 1
+        email.save()
 
-        assert one == 1
+
 
 class SendEmailIntegrationTests(unittest.TestCase):
     def setUp(self):

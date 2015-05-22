@@ -2,10 +2,45 @@ from django.http import HttpResponse, HttpResponseServerError
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives, EmailMessage
 from rest_framework import viewsets, serializers, routers
+from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.decorators import detail_route, list_route, api_view
 from rest_framework.response import Response
 import json
+from models import Email
+
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Email
+        fields = ('pk', 'from_email')
+
+class EmailViewSet(viewsets.ModelViewSet):
+
+    queryset = Email.objects.all()
+
+    serializer_class = EmailSerializer
+    search_fields = ('email_status')
+    ordering_fields = ('created')
+
+    def list(self, request, *args, **kwargs):
+        """
+        List available emails.
+        ---
+          parameters_strategy: merge
+          parameters:
+            - name: from_email
+              description: from email address must be a valid email address
+              required: false
+              type: string
+              paramType: query
+        """
+        return super(EmailViewSet, self).list(request, *args, **kwargs)
+
+    @detail_route(methods=['post'])
+    def send_test_email(self, pk=None, request, *args, **kwargs):
+
+        return Response(status=status.HTTP_200_OK())
 
 
 @api_view(["POST"])
@@ -97,6 +132,7 @@ def send_email_template(request):
         return HttpResponse(json.dumps(response), content_type='application/json')
 
     except Exception as ex:
+        import pdb;pdb.set_trace()
         return server_error(ex)
 
 def server_error(exception):
@@ -109,7 +145,8 @@ def server_error(exception):
 
 
 email_message_router = routers.DefaultRouter()
-#email_message_router.register('sendemailw', SendEmailViewSet)
+email_message_router = routers.DefaultRouter()
+email_message_router.register('email', EmailViewSet)
 
 
 
